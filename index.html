@@ -3,85 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الملف الشخصي</title>
+    <title>8ojx | Profile</title>
+    <!-- استدعاء خط Cairo و FontAwesome للأيقونات -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cairo', sans-serif;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #121212;
-            color: #ffffff;
+            /* خلفية فخمة بتدرج داكن ودخان ضوئي */
+            background: radial-gradient(circle at top, #1a1c29, #08090d);
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
-            margin: 0;
+            color: #fff;
+            padding: 20px;
         }
 
+        /* كارت البروفايل بالتأثير الزجاجي */
         .profile-card {
-            background-color: #1e1e1e;
-            padding: 30px;
-            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 24px;
+            padding: 35px 25px;
+            width: 100%;
+            max-width: 380px;
             text-align: center;
-            width: 300px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease;
         }
 
-        .profile-img-container {
+        .profile-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* الأفاتار مع توهج ملون */
+        .avatar-wrapper {
             position: relative;
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 20px;
+            width: 110px;
+            height: 110px;
+            margin: 0 auto 15px;
         }
 
-        .profile-img {
+        .avatar {
             width: 100%;
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid #333;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 25px rgba(114, 137, 218, 0.3);
         }
 
-        /* تم حذف تنسيقات زر/أيقونة التعديل نهائياً */
+        .username {
+            font-size: 1.5rem;
+            font-weight: 900;
+            letter-spacing: 1px;
+            margin-bottom: 6px;
+            background: linear-gradient(45deg, #fff, #a5b4fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
+        /* البايو */
+        .bio {
+            font-size: 0.9rem;
+            color: #94a3b8;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        /* أزرار التواصل */
         .social-links {
             display: flex;
             flex-direction: column;
-            gap: 12px;
-            margin-top: 20px;
+            gap: 14px;
         }
 
         .social-btn {
-            display: block;
-            padding: 12px;
-            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 14px;
+            border-radius: 14px;
             text-decoration: none;
             color: #fff;
-            font-weight: bold;
-            transition: opacity 0.2s;
+            font-weight: 700;
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
         }
 
-        .social-btn:hover {
-            opacity: 0.85;
+        .social-btn i {
+            font-size: 1.2rem;
         }
 
-        .tiktok { background-color: #000000; border: 1px solid #333; }
-        .instagram { background-color: #E1306C; }
-        .snapchat { background-color: #FFFC00; color: #000; }
-        .discord { background-color: #5865F2; }
+        /* تأثيرات الهوفر مع ألوان المنصات الرسمية */
+        .social-btn.tiktok:hover {
+            background: #000000;
+            border-color: #fe2c55;
+            box-shadow: 0 5px 15px rgba(254, 44, 85, 0.3);
+        }
+
+        .social-btn.instagram:hover {
+            background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+            border-color: transparent;
+            box-shadow: 0 5px 15px rgba(225, 48, 108, 0.3);
+        }
+
+        .social-btn.snapchat:hover {
+            background: #FFFC00;
+            color: #000;
+            border-color: #FFFC00;
+            box-shadow: 0 5px 15px rgba(255, 252, 0, 0.3);
+        }
+
+        .social-btn.discord:hover {
+            background: #5865F2;
+            border-color: #5865F2;
+            box-shadow: 0 5px 15px rgba(88, 101, 242, 0.4);
+        }
     </style>
 </head>
 <body>
 
     <div class="profile-card">
-        <div class="profile-img-container">
-            <!-- استبدل image.jpg برابط صورتك الشخصية -->
-            <img src="image.jpg" alt="Profile Picture" class="profile-img">
+        <!-- الأفاتار (استبدل الرابط برابط صورتك) -->
+        <div class="avatar-wrapper">
+            <img src="https://api.dicebear.com/7.x/bottts/svg?seed=8ojx" alt="Avatar" class="avatar">
         </div>
 
+        <!-- الاسم والبايو -->
+        <h1 class="username">8ojx</h1>
+        <p class="bio">Welcome to my space ✦ | Creator & Developer</p>
+
+        <!-- روابط التواصل -->
         <div class="social-links">
-            <a href="https://www.tiktok.com/@l_3ey" target="_blank" class="social-btn tiktok">TikTok</a>
-            <a href="https://www.instagram.com/33dzl" target="_blank" class="social-btn instagram">Instagram</a>
-            <a href="https://www.snapchat.com/add/l_3ej" target="_blank" class="social-btn snapchat">Snapchat</a>
-            <a href="https://discord.com/users/8ojx" target="_blank" class="social-btn discord">Discord (8ojx)</a>
+            <a href="https://www.tiktok.com/@l_3ey" target="_blank" class="social-btn tiktok">
+                <i class="fa-brands fa-tiktok"></i> TikTok
+            </a>
+            
+            <a href="https://www.instagram.com/33dzl" target="_blank" class="social-btn instagram">
+                <i class="fa-brands fa-instagram"></i> Instagram
+            </a>
+            
+            <a href="https://www.snapchat.com/add/l_3ej" target="_blank" class="social-btn snapchat">
+                <i class="fa-brands fa-snapchat"></i> Snapchat
+            </a>
+            
+            <a href="https://discord.com/users/8ojx" target="_blank" class="social-btn discord">
+                <i class="fa-brands fa-discord"></i> Discord
+            </a>
         </div>
     </div>
 
